@@ -9,11 +9,11 @@ const fetchResponseCheck = async (res: Response) => {
     }
 };
 
-const fetchContributors = async (owner: string, repo: string) => {
+const fetchContributors = async (owner: string, repo: string): Promise<TContributor[]> => {
     const contributors: Array<TContributor> = [];
     let page: number = 1;
     while (true) {
-        const result = await fetch(
+        const result: Array<TContributor> = await fetch(
             `https://api.github.com/repos/${owner}/${repo}/contributors?per_page=100&page=${page}`,
             {
                 method: 'GET',

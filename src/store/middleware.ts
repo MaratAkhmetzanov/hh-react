@@ -14,7 +14,7 @@ export const searchMiddleware: Middleware =
             dispatch(setIsFetchingAction(true));
 
             fetchContributors(payload.ownerLogin, payload.repository)
-                .then((res) => {
+                .then((res: Array<TContributor>) => {
                     const contributors: Array<TContributor> = res.filter(
                         (item: TContributor) =>
                             !payload.blacklist.includes(item.login) && item.login !== payload.ownerLogin,
@@ -29,7 +29,7 @@ export const searchMiddleware: Middleware =
                     }
                     dispatch(setIsFetchingAction(false));
                 })
-                .catch((error) => {
+                .catch((error: Error) => {
                     console.log(error);
                     dispatch(setContributorAction({ avatar: '', login: '' }));
                     dispatch(setIsFetchingAction(false));
