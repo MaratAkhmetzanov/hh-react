@@ -1,0 +1,11 @@
+.wrapper {
+	border-radius: 12px;
+	border: 1px solid #dfdfdf;
+	height: 100%;
+	min-height: 320px;
+	flex-grow: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #aaa;
+}
